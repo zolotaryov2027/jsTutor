@@ -1,4 +1,14 @@
-const numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", "");
+let numberOfFilms;
+
+
+function start(){
+    numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", "");
+    while(numberOfFilms == '' || numberOfFilms === null || isNaN(numberOfFilms)){
+        numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", "");
+    }
+}
+
+start()
 
 const personalMovieDB = {
     count: numberOfFilms,
@@ -9,20 +19,22 @@ const personalMovieDB = {
 }
 
 
-function getMovies(numberFilms){
+
+function rememberMyFilms(numberFilms, movies){
     for (let i = 0; i < numberFilms; i++){
         const a = prompt("Один из последних просмотренных фильмов", "");
         const b = prompt("На сколько оцените фильм?", "");
 
         if(a !== "" && b !== "" && a !== null && b !== null && a.length <= 50){
-            personalMovieDB.movies[a] = b
+            movies[a] = b
         }else{
             i--
         }
     }
 }
 
-getMovies(numberOfFilms);
+
+getMovies(numberOfFilms, personalMovieDB.movies);
 
 
 function checkCountFilms(){
@@ -35,5 +47,22 @@ function checkCountFilms(){
     }
 }
 
+function showMyDb(hidden){
+    if(!hidden){
+        console.log(personalMovieDB)
+    }
+}
 
-console.log(personalMovieDB)
+
+showMyDb(personalMovieDB.privat)
+
+
+function writeYourGenres(filmsGeneresDB){
+    for(let i = 1; i <= 3; i++){
+        const genere = prompt(`Ваш любимый жанр под номером ${i}`)
+        filmsGeneresDB = genere[i]
+    }
+}
+
+
+writeYourGenres(personalMovieDB.generes);
