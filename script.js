@@ -9,10 +9,6 @@ const personalMovieDB = {
 }
 
 
-
-
-
-
 for (let i = 0; i < numberOfFilms; i++){
     const a = prompt("Один из последних просмотренных фильмов", "");
     const b = prompt("На сколько оцените фильм?", "");
